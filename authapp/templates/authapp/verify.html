@@ -1,0 +1,9 @@
+{% extends 'authapp/base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <h3>Поздравляем</h3>
+        <span>Пользователь {{ user.email }} успешно подтвержден</span>
+    {% else %}
+        <h3>Упсс, проверка не прошла</h3>
+    {% endif %}
+{% endblock %}
