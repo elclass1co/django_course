@@ -16,6 +16,13 @@
         <a href="{% url 'auth:register' %}" class="">
             зарегистрироваться
         </a>
+    </button><button class="btn btn-round form-control">
+        <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/" class="">
+            вход через вк
+        </a></button><button class="btn btn-round form-control">
+        <a href="{% url 'social:begin' 'google-oauth2' %}?next=/" class="">
+            вход через google
+        </a>
     </button>
 
 {% endblock %}
