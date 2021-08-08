@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 from urllib.parse import urlunparse, urlencode
 
 import requests
+from django.conf import settings
 from social_core.exceptions import AuthForbidden
 
 from authapp.models import ShopUserProfile
@@ -16,7 +17,7 @@ def save_user_profile(backend, user, response, *args, **kwargs):
                           'api.vk.com',
                           '/method/users.get',
                           None,
-                          urlencode(OrderedDict(fields=','.join(('bdate', 'sex', 'about')),
+                          urlencode(OrderedDict(fields=','.join(('bdate', 'sex', 'about', 'photo_max_orig')),
                                                 access_token=response['access_token'],
                                                 v='5.92')),
                           None
@@ -33,6 +34,12 @@ def save_user_profile(backend, user, response, *args, **kwargs):
             user.shopuserprofile.gender = ShopUserProfile.FEMALE
         elif data['sex'] == 2:
             user.shopuserprofile.gender = ShopUserProfile.MALE
+
+    if 'photo_max_orig' in data:
+        photo_content = requests.get(data['photo_max_orig'])
+        with open(f'{settings.MEDIA_ROOT}/users_avatars/{user.pk}.jpg', 'wb') as photo_file:
+            photo_file.write(photo_content.content)
+            user.avatar = f'users_avatars/{user.pk}.jpg'
 
     if 'about' in data:
         user.shopuserprofile.about_me = data['about']
