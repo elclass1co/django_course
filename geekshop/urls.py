@@ -4,6 +4,7 @@ from django.conf.urls import include
 from django.conf.urls.static import static
 from django.urls import path
 
+
 urlpatterns = [
     path('', mainapp.main, name='main'),
     path('products/', include('mainapp.urls', namespace='products')),
@@ -13,6 +14,7 @@ urlpatterns = [
     path('',include('social_django.urls', namespace='social')),
 
     path('admin/', include('adminapp.urls', namespace='admin')),
+    path('orders/', include('ordersapp.urls', namespace='ordersapp'))
 ]
 
 if settings.DEBUG:
