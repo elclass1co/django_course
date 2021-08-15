@@ -32,3 +32,4 @@ class Basket(models.Model):
         return _totalcost
         
     total_cost = property(_get_total_cost)
+
