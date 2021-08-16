@@ -1,0 +1,67 @@
+    1  ssh-keygen
+    2  exit
+    3  cat /root/.ssh/id_rsa.pub 
+    4  apt update
+    5  apt install nginx
+    6  apt install postgresql postgresql-contrib
+    7  apt install python3-venv
+    8  apt install git
+    9  apt install mc
+   10  apt install htop
+   11  htop
+   12  mcedit /etc/postgresql/12/main/pg_hba.conf
+   13  systemctl restart postgresql
+   14  systemctl statust postgresql
+   15  systemctl status postgresql
+   16  psql -U postges
+   17  systemctl status postgresql
+   18  mcedit /etc/postgresql/12/main/pg_hba.conf
+   19  psql -U postges
+   20  psql -U postgres 
+   21  useradd -g www-data -m django
+   22  cd /home/django/
+   23  ls
+   24  ls -la
+   25  git clone git@github.com:elclass1co/django_course.git
+   26  ls -la
+   27  cd django_course/
+   28  ls -la
+   29  python3 -m venv env
+   30  source env/bin/activate
+   31  pip3 install -r requirements.txt 
+   32  python3 manage.py migrate
+   33  python3 manage.py runserver
+   34  python3 manage.py fill_db
+   35  python3 manage.py load_data
+   36  python3 manage.py loaddata
+   37  chown -R django /home/django/django_course/
+   38  mcedit /etc/systemd/system/gunicorn.service
+   39  pip3 install gunicorn
+   40  systemctl enable gunicorn
+   41  systemctl start gunicorn
+   42  systemctl status gunicorn
+   43  mcedit /etc/systemd/system/gunicorn.service
+   44  systemctl enable gunicorn
+   45  systemctl start gunicorn
+   46  systemctl status gunicorn
+   47  mcedit /etc/systemd/system/gunicorn.service
+   48  systemctl enable gunicorn
+   49  systemctl start gunicorn
+   50  systemctl status gunicorn
+   51  mcedit /etc/nginx/sites-available/geekshop
+   52  ln -s /etc/nginx/sites-available/geekshop /etc/nginx/sites-enabled/
+   53  mc
+   54  nginx -t
+   55  ln -s /etc/nginx/sites-available/django_course /etc/nginx/sites-enabled/
+   56  mc
+   57  nginx -t
+   58  mc
+   59  nginx -t
+   60  mc
+   61  mcedit /etc/nginx/sites-available/geekshop
+   62  nginx -t
+   63  mc
+   64  systemctl restart nginx
+   65  systemctl status nginx
+   66  history
+   67  history > hist.txt
